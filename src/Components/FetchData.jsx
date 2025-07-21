@@ -1,9 +1,10 @@
 import React from "react";
-import useFetch from "./UseFetch";
+import fruitData from "./fruit.json"; // Import from same folder
 import "./FetchData.css";
+
 const FetchData = () => {
-  const [data] = useFetch("https://api.npoint.io/9045c260b1565daa9e15");
-  console.log(data);
+  const data = fruitData;
+
   return (
     <>
       <h1 className="useFetch_heading">Use Fetch Custom Hook</h1>
@@ -12,6 +13,7 @@ const FetchData = () => {
           data.map((e, index) => (
             <li key={index} className="list_data">
               <h3>{e.name}</h3>
+              <img src={e.image} alt={e.name} width="200" />
               <p>
                 <strong>Importance: </strong>
                 {e.importance}
@@ -30,4 +32,5 @@ const FetchData = () => {
     </>
   );
 };
+
 export default FetchData;
